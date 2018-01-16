@@ -8,8 +8,8 @@ plugins:
     parameters:
         user: root
         pass: root
-        port: "3306"
-        host: "172.17.0.2"
+        port: 3306
+        host: 172.17.0.2
     mertics:
       - name: TablesNum
         resolution: 10

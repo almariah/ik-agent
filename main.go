@@ -12,6 +12,7 @@ import (
 	"github.com/ghodss/yaml"
 	"io/ioutil"
 	"time"
+	"github.com/golang/glog"
 )
 
 type AgentConfig struct {
@@ -43,6 +44,8 @@ func main() {
 	confPtr := flag.String("c", "/opt/ik-agent/etc/ik-agent.yaml", "InfraKeeper agent config file location. (Required)")
 	flag.Parse()
 
+	glog.Info("Starting InfraKeeper Agent...")
+
 	yamlConfig, err := ioutil.ReadFile(*confPtr)
 
 	if err != nil {
@@ -62,6 +65,7 @@ func main() {
 		Protocol: "tcp",
 	}
 
+	glog.Info("Connecting to graphite...")
 	err = gClient.Connect()
 	if err != nil {
 		log.Fatal(err)

@@ -1,0 +1,22 @@
+initConfig:
+  graphiteHost: 172.17.0.3
+  graphitePort: 2003
+  prefix: aws.us-east-1.docker
+
+plugins:
+  - name: ik-mysql
+    parameters:
+        user: root
+        pass: root
+        port: "3306"
+        host: "172.17.0.2"
+    mertics:
+      - name: TablesNum
+        resolution: 10
+        parameters:
+          db: mysql
+      - name: ActiveConnections
+        resolution: 10
+scripts:
+  - script1.py
+  - script2.sh
